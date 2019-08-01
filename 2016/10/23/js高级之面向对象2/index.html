@@ -1,0 +1,678 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/sisi2.jpg?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="对象概念：在js中，是键值对的集合。在生活中是任何事物的抽象。
+面向对象和面向过程的区别：面向过程：是一个执行者，代码的灵活性低，可维护性低。
+面向对象：是一个调度者，是一个领导者，而且代码的灵活性低，可维护性高，可扩展性高。坏处：代码的复杂度高，代码的可读性相对不好。
+举个例子：自己下楼买饭，和吩咐别人买饭的区别。
+JavaScript语言的特点：1.弱类型2.多范式3.基于对象的语言4.基于原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js高级之面向对象2">
+<meta property="og:url" content="http://yoursite.com/2016/10/23/js高级之面向对象2/index.html">
+<meta property="og:site_name" content="sisi的博客">
+<meta property="og:description" content="对象概念：在js中，是键值对的集合。在生活中是任何事物的抽象。
+面向对象和面向过程的区别：面向过程：是一个执行者，代码的灵活性低，可维护性低。
+面向对象：是一个调度者，是一个领导者，而且代码的灵活性低，可维护性高，可扩展性高。坏处：代码的复杂度高，代码的可读性相对不好。
+举个例子：自己下楼买饭，和吩咐别人买饭的区别。
+JavaScript语言的特点：1.弱类型2.多范式3.基于对象的语言4.基于原">
+<meta property="og:updated_time" content="2016-10-29T15:37:16.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js高级之面向对象2">
+<meta name="twitter:description" content="对象概念：在js中，是键值对的集合。在生活中是任何事物的抽象。
+面向对象和面向过程的区别：面向过程：是一个执行者，代码的灵活性低，可维护性低。
+面向对象：是一个调度者，是一个领导者，而且代码的灵活性低，可维护性高，可扩展性高。坏处：代码的复杂度高，代码的可读性相对不好。
+举个例子：自己下楼买饭，和吩咐别人买饭的区别。
+JavaScript语言的特点：1.弱类型2.多范式3.基于对象的语言4.基于原">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/23/js高级之面向对象2/"/>
+
+
+  <title> js高级之面向对象2 | sisi的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">sisi的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">luosisi的个人博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js高级之面向对象2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T23:28:07+08:00" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/js面向对象编程/" itemprop="url" rel="index">
+                    <span itemprop="name">js面向对象编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>概念：在js中，是键值对的集合。在生活中是任何事物的抽象。</p>
+<h3 id="面向对象和面向过程的区别："><a href="#面向对象和面向过程的区别：" class="headerlink" title="面向对象和面向过程的区别："></a>面向对象和面向过程的区别：</h3><p><code>面向过程：</code>是一个执行者，代码的灵活性低，可维护性低。</p>
+<p><code>面向对象：</code>是一个调度者，是一个领导者，而且代码的灵活性低，可维护性高，可扩展性高。<code>坏处</code>：代码的复杂度高，代码的可读性相对不好。</p>
+<p><code>举个例子：</code>自己下楼买饭，和吩咐别人买饭的区别。</p>
+<h3 id="JavaScript语言的特点："><a href="#JavaScript语言的特点：" class="headerlink" title="JavaScript语言的特点："></a>JavaScript语言的特点：</h3><p>1.弱类型<br>2.多范式3.基于对象的语言<br>4.基于原型的语言</p>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>概念：所谓的原型就是函数的prototype所引用的对象。(只要声明了一个函数，那么原型就存在)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">console.log(foo.prototype)//打印原型,原型里面的constructor指的是函数本身</div><div class="line"></div><div class="line">&#125;</div><div class="line">var f=new foo();</div><div class="line">console.log(f.constructor)//对象可以访问原型里面的属性，将函数体打印出来。</div></pre></td></tr></table></figure></p>
+<ul>
+<li>原型的特点： 通过该函数创建的对象都可以共享该原型，也就是这些对象可以访问原型上的属性和方法。</li>
+<li>原型的本质：原型其实就是一个对象</li>
+<li>原型的好处：实现同类数据之间的数据共享。</li>
+</ul>
+<h3 id="为什么要有原型？"><a href="#为什么要有原型？" class="headerlink" title="为什么要有原型？"></a>为什么要有原型？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function Person(name,age,gender)&#123;</div><div class="line">this.name=name;</div><div class="line">this.age=age;</div><div class="line">this.gender=gender;</div><div class="line">this.talk=function()&#123;</div><div class="line">console.log(&quot;呵呵呵&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var stu1=new Person(&quot;sisi&quot;,18,&quot;女&quot;);</div><div class="line">var stu2=new Person(&quot;ls&quot;,18,&quot;男&quot;);</div><div class="line">stu1.talk();</div><div class="line">stu2.talk();</div></pre></td></tr></table></figure>
+<p>思考：这两个人的talk方法一样吗？</p>
+<p>答案：不一样，他们是相互独立的，因为在构造函数中，存在着相同的代码逻辑，然后在建立对象的时候，是拷贝构造函数里面的代码逻辑。而这样添加方法实相当的浪费内存，所以这个时候我们把构造函数里面的方法提炼出来，放在一个公共的地方，就是构造函数的原型。</p>
+<h3 id="获取原型的方式"><a href="#获取原型的方式" class="headerlink" title="获取原型的方式"></a>获取原型的方式</h3><ol>
+<li>通过函数foo.prototype</li>
+<li>通过对象obj._proto__</li>
+</ol>
+<h3 id="对象的组成"><a href="#对象的组成" class="headerlink" title="对象的组成"></a>对象的组成</h3><p>两部分：对象本身和他的原型</p>
+<h4 id="对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）"><a href="#对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）" class="headerlink" title="对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）"></a>对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）</h4><h4 id="原型属性：站在函数的角度，原型可以称为该函数的原型属性"><a href="#原型属性：站在函数的角度，原型可以称为该函数的原型属性" class="headerlink" title="原型属性：站在函数的角度，原型可以称为该函数的原型属性"></a>原型属性：站在函数的角度，原型可以称为该函数的原型属性</h4><h4 id="原型对象：站在对象的角度，原型可以称为该对象的原型对象"><a href="#原型对象：站在对象的角度，原型可以称为该对象的原型对象" class="headerlink" title="原型对象：站在对象的角度，原型可以称为该对象的原型对象"></a>原型对象：站在对象的角度，原型可以称为该对象的原型对象</h4><h3 id="处理proto的兼容（该属性是非兼容的）"><a href="#处理proto的兼容（该属性是非兼容的）" class="headerlink" title="处理proto的兼容（该属性是非兼容的）"></a>处理<strong>proto</strong>的兼容（该属性是非兼容的）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function getPrototype(obj)&#123;</div><div class="line">return obj.__proto__?obj.__pr0to__:obj.constructor.prototype;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="标准构造函数的写法"><a href="#标准构造函数的写法" class="headerlink" title="标准构造函数的写法"></a>标准构造函数的写法</h3><ul>
+<li>和某个具体对象息息相关的属性。这些属性。一般放在构造函数内部。</li>
+<li>那些为了共享的属性，就是每一个对象都具有的属性，是确定的并且不会发生改变的属性，是放在函数的原型里。</li>
+<li>在一般情况下，所有的方法都被认为是共有的，放在原型里面。</li>
+</ul>
+<p>注意：不提倡在原生原型上扩展成员，因为这会导致原生对象过于庞大，累赘影响性能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">一个标准的构造函数的写法</div><div class="line">functio B(name,age,gender)&#123;</div><div class="line">this.name=name;</div><div class="line">this.age=age;</div><div class="line">this.gender=gender;</div><div class="line">&#125;</div><div class="line">B.ptototype.location=&quot;china&quot;;</div><div class="line">B.prototype.sayhi=function()&#123;</div><div class="line">console.log	(&quot;hi&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">工厂式创建对象。</div><div class="line">functio B(name,age,gender)&#123;</div><div class="line">this.name=name;</div><div class="line">this.age=age;</div><div class="line">this.gender=gender;</div><div class="line">&#125;</div><div class="line">function creatB()&#123;</div><div class="line">B.prototype.location=&quot;china;</div><div class="line">B.prototype.sayhi=function()&#123;</div><div class="line">console.log(&quot;hi&quot;)</div><div class="line">&#125;</div><div class="line">return new B(name,age,gender);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="替换原型的时候别忘了给原型叫上constructor属性。"><a href="#替换原型的时候别忘了给原型叫上constructor属性。" class="headerlink" title="替换原型的时候别忘了给原型叫上constructor属性。"></a>替换原型的时候别忘了给原型叫上constructor属性。</h3><h3 id="原型属性的特征"><a href="#原型属性的特征" class="headerlink" title="原型属性的特征"></a>原型属性的特征</h3><ol>
+<li>动态性：<ul>
+<li>给原型扩展的成员会直接反应到创建的对象的身上。</li>
+<li>替换原型对象，不会影响到已创建的对象身上，但会直接影响之后创建出来的对象。</li>
+</ul>
+</li>
+<li>唯一性： 同一函数创建出来的对象都拥有同一个原型对象，共享原型对象的数据。</li>
+<li>不可变性： 对象是无法改变原型对象上的任何成员。</li>
+<li>继承性：所有对象都继承他的原型对象。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/20/js高级之面向对象1/" rel="next" title="js高级之面向对象1">
+                <i class="fa fa-chevron-left"></i> js高级之面向对象1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/25/js高级之面向对象3/" rel="prev" title="js高级之面向对象3">
+                js高级之面向对象3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/sisi2.jpg"
+               alt="sisi" />
+          <p class="site-author-name" itemprop="name">sisi</p>
+          <p class="site-description motion-element" itemprop="description">the web of study</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luosisi999/luosisi999.github.io.git" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/北风吹过南方姑靓" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/losisi" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.facebook.com/sisi.luo.2" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象和面向过程的区别："><span class="nav-number">2.</span> <span class="nav-text">面向对象和面向过程的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript语言的特点："><span class="nav-number">3.</span> <span class="nav-text">JavaScript语言的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-number">4.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要有原型？"><span class="nav-number">5.</span> <span class="nav-text">为什么要有原型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取原型的方式"><span class="nav-number">6.</span> <span class="nav-text">获取原型的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的组成"><span class="nav-number">7.</span> <span class="nav-text">对象的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）"><span class="nav-number">7.1.</span> <span class="nav-text">对象的类型：就是它构造函数的名字（只是js中将类型弱化了。）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型属性：站在函数的角度，原型可以称为该函数的原型属性"><span class="nav-number">7.2.</span> <span class="nav-text">原型属性：站在函数的角度，原型可以称为该函数的原型属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型对象：站在对象的角度，原型可以称为该对象的原型对象"><span class="nav-number">7.3.</span> <span class="nav-text">原型对象：站在对象的角度，原型可以称为该对象的原型对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理proto的兼容（该属性是非兼容的）"><span class="nav-number">8.</span> <span class="nav-text">处理proto的兼容（该属性是非兼容的）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准构造函数的写法"><span class="nav-number">9.</span> <span class="nav-text">标准构造函数的写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换原型的时候别忘了给原型叫上constructor属性。"><span class="nav-number">10.</span> <span class="nav-text">替换原型的时候别忘了给原型叫上constructor属性。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型属性的特征"><span class="nav-number">11.</span> <span class="nav-text">原型属性的特征</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sisi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
