@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://luosisi999.github.io">
   <title>ng-bind-html和.的使用 | 罗同学的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）  2.$compile的使用：可以解决插入带有angular指令的字符串。通过$compile服务可以编译html字符串或dom对象或jqLite对象，然后得到一个编译函数，再传入$scope，就会在当前作用域进行编译，返回编译好的jqLit">
-<meta name="keywords" content="angular">
+  <meta name="description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）">
+<meta name="keywords" content="angular,前端开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ng-bind-html和.的使用">
 <meta property="og:url" content="https://luosisi999.github.io/2019/08/02/ng-bind-html和$compile的使用/index.html">
 <meta property="og:site_name" content="罗同学的博客">
-<meta property="og:description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）  2.$compile的使用：可以解决插入带有angular指令的字符串。通过$compile服务可以编译html字符串或dom对象或jqLite对象，然后得到一个编译函数，再传入$scope，就会在当前作用域进行编译，返回编译好的jqLit">
+<meta property="og:description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzIwMTczMzIxNjUx">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzIwMTczODA2NjY2">
-<meta property="og:updated_time" content="2019-08-22T11:48:04.774Z">
+<meta property="og:updated_time" content="2019-08-23T02:30:10.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ng-bind-html和.的使用">
-<meta name="twitter:description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）  2.$compile的使用：可以解决插入带有angular指令的字符串。通过$compile服务可以编译html字符串或dom对象或jqLite对象，然后得到一个编译函数，再传入$scope，就会在当前作用域进行编译，返回编译好的jqLit">
+<meta name="twitter:description" content="1.ng-bind-html的使用ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）">
 <meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzIwMTczMzIxNjUx">
   
     <link rel="alternative" href="/atom.xml" title="罗同学的博客" type="application/atom+xml">
@@ -180,6 +180,7 @@
       
         <h5 id="1-ng-bind-html的使用"><a href="#1-ng-bind-html的使用" class="headerlink" title="1.ng-bind-html的使用"></a>1.ng-bind-html的使用</h5><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzIwMTczMzIxNjUx" alt="这里写图片描述"><br>ng-bind-html:可以插入带标签的字符串。但是需要配合$sce使用。（缺点：标签里面不能带有angular的指令）</p>
 <hr>
+<a id="more"></a>
 <h5 id="2-compile的使用：可以解决插入带有angular指令的字符串。"><a href="#2-compile的使用：可以解决插入带有angular指令的字符串。" class="headerlink" title="2.$compile的使用：可以解决插入带有angular指令的字符串。"></a>2.$compile的使用：可以解决插入带有angular指令的字符串。</h5><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzIwMTczODA2NjY2" alt="这里写图片描述"><br>通过$compile服务可以编译html字符串或dom对象或jqLite对象，然后得到一个编译函数，再传入$scope，就会在当前作用域进行编译，返回编译好的jqLite对象，这时就可以直接添加到文档中了（也可以先添加到文档再编译）。<br>编译的实质其实就是对dom对象解析，使dom对象与scope进行耦合，通过绑定可以实现数据的更新</p>
 
       
@@ -195,6 +196,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端开发</a>
         		</li>
       		
 		</ul>
@@ -263,6 +268,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/22/如何查找文献并定级/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          如何查找文献并定级
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/02/angular上传文件/" id="article-nav-older" class="article-nav-link-wrap">
@@ -405,10 +419,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
@@ -417,7 +427,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文献相关</a>
               </li>
             
             <div class="clearfix"></div>
